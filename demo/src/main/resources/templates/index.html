@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="utf-8"/>
+  <title>Demo</title>
+</head>
+<style>
+  /* CSS inline chỉ chứa định dạng cho button */
+  a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+  }
+
+  /* CSS inline cho hover - màu nền đậm hơn */
+  a:hover {
+    background-color: #45a049;
+  }
+</style>
+<body>
+<div>
+  <h3>Mảng 1000 phần tử:</h3>
+  <p th:text="${randomList}"></p>
+  <a href="/" >Làm mới mảng</a>
+  <hr/>
+  <h3>Mảng đã sắp xếp:</h3>
+  <p th:text="${sortedList}"></p>
+  <hr/>
+  <h3>Thời gian thực hiện InsertionSort: [[${executionTimeInsertionSort}]] ms</h3>
+  <h3>Thời gian thực hiện SelectionSort: [[${executionTimeSelectionSort}]] ms</h3>
+  <h3>Thời gian thực hiện BubbleSort: [[${executionTimeBubbleSort}]] ms</h3>
+  <h3>Thời gian thực hiện MergeSort: [[${executionTimeMergeSort}]] ms</h3>
+  <h3>Thời gian thực hiện QuickSort: [[${executionTimeQuickSort}]] ms</h3>
+  <hr/>
+  <h3>Các giải thuật sắp xếp sử dụng:</h3>
+  <ol>
+    <li><span>Insert sort:</span>
+      <ul style="list-style-type: none;">
+        <li>Thực hiện:</li>
+        <li><ul>
+          <li>Tại bước k = 1, 2, ..., n đưa phần tử thứ k trong mảng đã cho vào đúng vị trí trong dãy gồm k phần tử đầu tiên.</li>
+          <li>Kết quả là sau bước thứ k, sẽ có k phần tử đầu tiên được sắp xếp theo thứ tự.</li>
+        </ul></li>
+        <li>Đánh giá:</li>
+        <li><ul>
+          <li>Tốt nhất: O(n)</li>
+          <li>Trung bình: O(n^2)</li>
+          <li>Xấu nhất: O(n^2</li>
+        </ul></li>
+      </ul>
+    </li>
+    <li><span>Selection sort:</span>
+      <ul style="list-style-type: none;">
+        <li>Thực hiện:</li>
+        <li><ul>
+          <li>Tìm phần tử nhỏ nhất đưa vào vị trí thứ 1</li>
+          <li>Tìm phần tử nhỏ thứ 2 đưa vào vị trí thứ 2</li>
+          <li>...</li>
+          <li>Tìm phần tử nhỏ thứ n đưa vào vị trí thứ n</li>
+        </ul></li>
+        <li>Đánh giá độ phức tạp: O(n^2)</li>
+      </ul>
+    </li>
+    <li><span>Bubble sort:</span>
+      <ul style="list-style-type: none;">
+        <li>Thực hiện:</li>
+        <li><ul>
+          <li>Duyệt mảng từ phần tử đầu tiên</li>
+          <li>So sánh mỗi phần tử với phần tử liền trước nó, nếu sai vị trí thì thực hiện đổi chỗ 2 phần tử</li>
+          <li>Thực hiện đến phần tử cuối cùng mà không đổi chỗ thì hoàn thành</li>
+        </ul></li>
+        <li>Đánh giá:</li>
+        <li><ul>
+          <li>Tốt nhất: O(n)</li>
+          <li>Trung bình: O(n^2)</li>
+          <li>Xấu nhất: O(n^2</li>
+        </ul></li>
+      </ul>
+    </li>
+    <li><span>Merge sort:</span>
+      <ul style="list-style-type: none;">
+        <li>Thực hiện:</li>
+        <li><ul>
+          <li>Chia mảng làm 2 phần có số phần tử bằng nhau</li>
+          <li>Gộp mảng lại bẳng cách lấy từng phần tử mỗi mảng so sánh với nhau để sắp xếp theo đúng thứ tự</li>
+          <li>Đệ quy việc này trên các mảng được chia đến khi tạo thành các mảng có 1 phần tử</li>
+        </ul></li>
+        <li>Đánh giá độ phức tạp: O(nlogn)</li>
+      </ul>
+    </li>
+    <li><span>Quick sort:</span>
+      <ul style="list-style-type: none;">
+        <li>Thực hiện:</li>
+        <li><ul>
+          <li>Chọn 1 phần tử là chốt</li>
+          <li>Sắp xếp phần tử trong mảng thành 2 phần, 1 phần nhỏ chốt, 1 phần lớn hơn hoặc bằng chốt</li>
+          <li>Đệ qui việc này trên các mảng được chia đến khi kích thước các mảng còn 0 hoặc 1 phần tử</li>
+        </ul></li>
+        <li>Đánh giá:</li>
+        <li><ul>
+          <li>Tốt nhất: O(nlogn)</li>
+          <li>Trung bình: O(nlogn)</li>
+          <li>Xấu nhất: O(n^2)</li>
+        </ul></li>
+      </ul>
+    </li>
+  </ol>
+  <hr/>
+  <h3 style="padding-bottom: 100px;">Đánh giá giải thuật sắp xếp nhanh nhất là "quick sort", tệ nhất là "selection
+    sort",
+    ổn định nhất là "merge
+    sort"</h3>
+</div>
+</body>
+</html>
